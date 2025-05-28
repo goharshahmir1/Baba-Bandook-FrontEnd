@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Form Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+        
+        .error {
+            font-size: 0.9em;
+            color: red;
+        }
+        
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        button[type="reset"] {
+            background-color: #6c757d;
+        }
+        
+        button[type="reset"]:hover {
+            background-color: #5a6268;
+        }
+        
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        
+        fieldset {
+            border: none;
+            margin: 10px 0;
+            padding: 0;
+        }
+        
+        legend {
+            font-weight: bold;
+            color: #555;
+        }
+        
+        @media (max-width: 600px) {
+            form {
+                padding: 15px;
+            }
+        
+            button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h2>User  Feedback </h2>
+<form id="feedbackForm">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br>
+    <span class="error" id="nameError"></span><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br>
+    <span class="error" id="emailError"></span><br>
+
+    <label for="phone">Phone:</label><br>
+    <input type="tel" id="phone" name="phone" required><br>
+    <span class="error" id="phoneError"></span><br>
+
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" required></textarea><br>
+    <span class="error" id="messageError"></span><br>
+
+    <label for="dropdown">City:</label><br>
+    <select id="dropdown" name="dropdown" required>
+        <option value="">--Please choose an option--</option>
+        <option value="option1">Karachi</option>
+        <option value="option2">Quetta</option>
+        <option value="option3">lahore</option>
+        <option value="option3">Peshawar</option>
+        <option value="option3">Islamabad</option>
+        <option value="option3">Karachi</option>
+    </select><br>
+    <span class="error" id="dropdownError"></span><br>
+
+    <label>Rating:</label><br>
+    <input type="checkbox" id="preference1" name="preferences" value="Preference 1">
+    <label for="preference1">Good</label><br>
+    <input type="checkbox" id="preference2" name="preferences" value="Preference 2">
+    <label for="preference2">Satisfactory</label><br>
+    <input type="checkbox" id="preference3" name="preferences" value="Preference 3">
+    <label for="preference3">Poor</label><br>
+
+    <br>
+    <span class="error" id="genderError"></span><br>
+
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+</form>
+
+<script>
+    document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Clear previous error messages
+        document.getElementById('nameError').textContent = '';
+        document.getElementById('emailError').textContent = '';
+        document.getElementById('phoneError').textContent = '';
+        document.getElementById('messageError').textContent = '';
+        document.getElementById('dropdownError').textContent = '';
+        document.getElementById('genderError').textContent = '';
+
+        // Validate form fields
+        let isValid = true;
+
+        // Name validation
+        const name = document.getElementById('name').value;
+        if (name.trim() === '') {
+            document.getElementById('nameError').textContent = 'Name is required.';
+            isValid = false;
+        }
+
+        // Email validation
+        const email = document.getElementById('email').value;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+            isValid = false;
+        }
+
+        // Phone validation
+        const phone = document.getElementById('phone').value;
+        if (phone.trim() === '') {
+            document.getElementById('phoneError').textContent = 'Phone number is required
+        

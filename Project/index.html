@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baba Bandook - E-Commerce Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Product Card Styles */
+        .product-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease-in-out;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .card {
+            height: 100%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: none;
+        }
+
+        .card-body {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Product Info Hover Effect */
+        .product-info {
+            display: none;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .product-info {
+            display: block;
+        }
+
+        /* Text Animations */
+        .card-body h5 {
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .card-body h5:hover {
+            color: #007bff;
+        }
+
+        .card-body p {
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .card-body p:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        /* Search Container */
+        #searchContainer {
+            margin-right: 15px;
+            min-width: 300px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+        }
+
+        footer h3 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        footer h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        footer h3:hover::after {
+            width: 75px;
+        }
+
+        footer p {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        footer ul li {
+            color: #cccccc;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        footer ul li:hover {
+            color: #ffd700;
+            padding-left: 5px;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-icon {
+            color: #cccccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #222222;
+        }
+
+        .social-icon:hover {
+            color: #ffd700;
+            border-color: #ffd700;
+            transform: translateY(-3px);
+            background-color: #2a2a2a;
+            text-decoration: none;
+        }
+
+        /* Copyright Section */
+        footer .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: #888888;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            footer {
+                padding: 30px 0 15px;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            footer h3 {
+                margin-top: 20px;
+            }
+
+            footer .col-md-4 {
+                margin-bottom: 30px;
+            }
+
+            #searchContainer {
+                margin-bottom: 10px;
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Baba Bandook</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Feedback.html">Feedback</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Admin.html"> Admin</a>
+                    </li>
+                </ul>
+                <div class="d-flex flex-column flex-lg-row">
+                    <div id="searchContainer" class="input-group">
+                        <input type="text" class="form-control" placeholder="Search Products" id="searchInput">
+                        <button class="btn btn-outline-light" type="button" onclick="handleSearch()">Search</button>
+                    </div>
+                    <div class="d-flex">
+                        <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                        <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Register</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm" onsubmit="return handleRegistration(event)">
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" name="confirmPassword" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm" onsubmit="return handleLogin(event)">
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Welcome to Baba Bandook</h1>
+        <div class="row">
+            <div class="col-12">
+                <h2>Introduction</h2>
+                <p class="lead">
+                    Welcome to our little slice of explosive heaven! We're not just a store, we're an arsenal of fun where bullets are our bread and butter. Whether you're a seasoned sharpshooter or a curious beginner, we've got everything from birdshot to bear-sized booms to satisfy your inner marksman.
+                </p>
+            </div>
+        </div>
+        <div id="gallery" class="row mt-4">
+            <!-- Products will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>About Us</h3>
+                    <p>
+                        Welcome to Baba Bandook, your one-stop shop for all your ammunition needs. We offer a wide selection of bullets, from birdshot to bear-sized booms, to satisfy your inner marksman.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Phone: 123-456-7890</li>
+                        <li>Email: info@bababandook.com</li>
+                        <li>Address: 123 Main St, Anytown, USA</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://facebook.com" target="_blank" class="social-icon">Facebook</a>
+                        <a href="https://twitter.com" target="_blank" class="social-icon">Twitter</a>
+                        <a href="https://instagram.com" target="_blank" class="social-icon">Instagram</a>
+                        <a href="https://linkedin.com" target="_blank" class="social-icon">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 copyright">
+                    <p>&copy; 2023 Baba Bandook. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

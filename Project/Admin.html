@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styless.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#users">Users</a></li>
+                    <li><a href="#orders">Orders</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="products">
+                <h2>Manage Products</h2>
+                <form id="addProductForm">
+                    <input type="text" id="productName" placeholder="Product Name" required>
+                    <input type="number" id="productPrice" placeholder="Product Price" required>
+                    <button type="submit" class="add-button">Add Product</button>
+                </form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTableBody">
+                        <tr>
+                            <td>1</td>
+                            <td>Sample Product 1</td>
+                            <td>$10.00</td>
+                            <td><button class="delete-button">Delete</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Sample Product 2</td>
+                            <td>$20.00</td>
+                            <td><button class="delete-button">Delete</button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Sample Product 3</td>
+                            <td>$30.00</td>
+                            <td><button class="delete-button">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="users">
+                <h2>Manage Users</h2>
+                <form id="addUser Form">
+                    <input type="text" id="userName" placeholder="User  Name" required>
+                    <input type="email" id="userEmail" placeholder="User  Email" required>
+                    <button type="submit" class="add-button">Add User</button>
+                </form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                        <tr>
+                            <td>1</td>
+                            <td>Sample User 1</td>
+                            <td>user1@example.com</td>
+                            <td><button class="delete-button">Delete</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Sample User 2</td>
+                            <td>user2@example.com</td>
+                            <td><button class="delete-button">Delete</button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Sample User 3</td>
+                            <td>user3@example.com</td>
+                            <td><button class="delete-button">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
